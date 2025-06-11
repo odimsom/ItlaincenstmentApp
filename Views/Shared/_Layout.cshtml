@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Incestment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <style>
+        :root {
+            --color-primary: #60a5fa; /* Azul claro */
+            --color-primary-dark: #2563eb; /* Azul intenso */
+            --color-secondary: #9ca3af; /* Gris claro */
+            --color-accent: #22d3ee; /* Cian */
+            --bg-dark: #0f172a; /* Fondo principal */
+            --bg-darker: #1e293b; /* Fondo navbar y footer */
+            --text-light: #f1f5f9; /* Texto claro */
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        a {
+            color: var(--color-accent);
+        }
+
+            a:hover {
+                color: var(--color-primary-dark);
+            }
+    </style>
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Refactory.styles.css" asp-append-version="true" />
+</head>
+<body class="min-h-screen flex flex-col text-[var(--text-light)]">
+
+    <header class="bg-[var(--bg-darker)] shadow-sm border-b border-gray-700">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a class="flex items-center space-x-2 text-xl font-bold text-[var(--text-light)] hover:text-[var(--color-accent)] transition-colors"
+                       asp-area="" asp-controller="Home" asp-action="Index">
+                        <i data-lucide="factory" class="w-6 h-6 text-[var(--color-primary)]"></i>
+                        <span>Incestment</span>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a class="flex items-center space-x-2 hover:text-[var(--color-accent)] transition-colors font-medium"
+                       asp-area="" asp-controller="Home" asp-action="Index">
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                        <span>Home</span>
+                    </a>
+                    <a class="flex items-center space-x-2 hover:text-[var(--color-accent)] transition-colors font-medium"
+                       asp-area="" asp-controller="Asset" asp-action="Index">
+                        <i data-lucide="package" class="w-4 h-4"></i>
+                        <span>Assets</span>
+                    </a>
+                    <a class="flex items-center space-x-2 hover:text-[var(--color-accent)] transition-colors font-medium"
+                       asp-area="" asp-controller="AssetType" asp-action="Index">
+                        <i data-lucide="layers" class="w-4 h-4"></i>
+                        <span>Asset Types</span>
+                    </a>
+                </div>
+
+                <div class="md:hidden">
+                    <button type="button"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-[var(--text-light)] hover:text-[var(--color-accent)] hover:bg-[var(--bg-dark)] transition-colors"
+                            onclick="toggleMobileMenu()"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+                        <i data-lucide="x" class="w-6 h-6 hidden" id="close-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 border-t border-gray-700 bg-[var(--bg-dark)]">
+                    <a class="flex items-center space-x-3 px-3 py-2 rounded-md hover:text-[var(--color-accent)] hover:bg-[var(--bg-darker)] transition-colors"
+                       asp-area="" asp-controller="Home" asp-action="Index">
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                        <span>Home</span>
+                    </a>
+                    <a class="flex items-center space-x-3 px-3 py-2 rounded-md hover:text-[var(--color-accent)] hover:bg-[var(--bg-darker)] transition-colors"
+                       asp-area="" asp-controller="Asset" asp-action="Index">
+                        <i data-lucide="package" class="w-4 h-4"></i>
+                        <span>Assets</span>
+                    </a>
+                    <a class="flex items-center space-x-3 px-3 py-2 rounded-md hover:text-[var(--color-accent)] hover:bg-[var(--bg-darker)] transition-colors"
+                       asp-area="" asp-controller="AssetType" asp-action="Index">
+                        <i data-lucide="layers" class="w-4 h-4"></i>
+                        <span>Asset Types</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="flex-1">
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="bg-[var(--bg-darker)] border-t border-gray-700 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 text-[var(--color-secondary)]">
+                    <i data-lucide="copyright" class="w-4 h-4"></i>
+                    <span>@DateTime.Now.Year Pixdarr-Invesment. All rights reserved.</span>
+                </div>
+                <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-[var(--color-accent)] transition-colors">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="hover:text-[var(--color-accent)] transition-colors">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="hover:text-[var(--color-accent)] transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        lucide.createIcons();
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function (event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = event.target.closest('button');
+
+            if (!menuButton && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                document.getElementById('menu-icon').classList.remove('hidden');
+                document.getElementById('close-icon').classList.add('hidden');
+            }
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

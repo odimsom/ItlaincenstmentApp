@@ -1,0 +1,59 @@
+﻿@using ItlaincenstmentApp.Core.Aplicationn.ViewModels.AssetsTypesViewModels
+@model SaveAssetsTypesViewModel
+@{
+    var action = ViewBag.Action ?? "Create";
+    ViewData["Title"] = $"{action} Asset Type";
+}
+
+<div class="max-w-3xl mx-auto mt-10 bg-white dark:bg-gray-800 shadow-md rounded-2xl p-6">
+    <h1 class="text-3xl font-extrabold text-gray-800 dark:text-white mb-6 flex items-center gap-2">
+        <i data-lucide="plus-circle" class="w-6 h-6 text-blue-500"></i>
+        @ViewData["Title"]
+    </h1>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="mb-4 p-4 rounded-md bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300 shadow">
+            <strong>Error:</strong> @ViewBag.Error
+        </div>
+    }
+
+    <form asp-action="@action" method="post" class="space-y-6">
+        @if (Model.Id > 0)
+        {
+            <input type="hidden" asp-for="Id" />
+        }
+
+        <div>
+            <label asp-for="Name" class="block font-medium text-gray-700 dark:text-gray-300">Nombre</label>
+            <input asp-for="Name" class="mt-1 w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500" />
+            <span asp-validation-for="Name" class="text-sm text-red-600"></span>
+        </div>
+
+        <div>
+            <label asp-for="Description" class="block font-medium text-gray-700 dark:text-gray-300">Descripción</label>
+            <textarea asp-for="Description" rows="3"
+                      class="mt-1 w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-blue-500 focus:border-blue-500"></textarea>
+            <span asp-validation-for="Description" class="text-sm text-red-600"></span>
+        </div>
+        <div class="flex justify-between mt-8">
+            <button type="submit"
+                    class="px-6 py-2 rounded-md text-white font-semibold
+                           @((action == "Eliminar") ? "bg-red-600 hover:bg-red-700" :
+                             (action == "Editar") ? "bg-yellow-500 hover:bg-yellow-600" :
+                             "bg-blue-600 hover:bg-blue-700")">
+                @(action)
+            </button>
+
+            <a asp-action="Index"
+               class="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>lucide.createIcons();</script>
+}

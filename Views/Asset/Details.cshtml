@@ -1,0 +1,38 @@
+﻿@using ItlaincenstmentApp.Core.Aplicationn.ViewModels.AssetsTypesViewModels
+@model AssetsTypesViewModel
+@{
+    ViewData["Title"] = "Detalles de Asset Type";
+}
+
+<div class="max-w-3xl mx-auto mt-10 bg-blue-800 dark:bg-gray-800 shadow-md rounded-2xl p-6">
+    <h1 class="text-3xl font-extrabold text-gray-800 dark:text-white mb-6 flex items-center gap-2">
+        <i data-lucide="layers" class="w-6 h-6 text-blue-500"></i>
+        Detalles de Asset Type
+    </h1>
+
+    <div class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+        <div>
+            <span class="font-semibold">Nombre:</span>
+            <span>@Model.Name</span>
+        </div>
+        <div>
+            <span class="font-semibold">Descripción:</span>
+            <span>@Model.Description</span>
+        </div>
+        @* <div> *@
+        @*     <span class="font-semibold">Cantidad de Activos:</span> *@
+        @*     <span>@Model.AssetsQuantity</span> *@
+        @* </div> *@
+    </div>
+
+    <div class="mt-8 flex gap-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id"
+           class="px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition">
+            Editar
+        </a>
+        <a asp-action="Index"
+           class="px-4 py-2 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md transition">
+            Volver al Listado
+        </a>
+    </div>
+</div>

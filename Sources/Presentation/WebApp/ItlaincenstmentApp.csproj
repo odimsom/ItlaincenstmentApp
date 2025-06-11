@@ -15,9 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Aplicationn\ItlaincenstmentApp.Core.Aplicationn.csproj" />
-    <ProjectReference Include="..\ItlaincenstmentApp.Core.Domain\ItlaincenstmentApp.Core.Domain.csproj" />
-    <ProjectReference Include="..\Persistence\ItlaincenstmentApp.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\..\Core\ItlaincenstmentApp.Core.Aplicationn\ItlaincenstmentApp.Core.Aplicationn.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ItlaincenstmentApp.Infrastructure.Persistence\ItlaincenstmentApp.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
